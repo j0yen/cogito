@@ -11,6 +11,7 @@ use serde::Deserialize;
 /// IRI base for the cogito ontology
 pub const COGITO_NS: &str = "https://wintermute.local/cogito#";
 pub const COGITO_ONT: &str = "https://wintermute.local/cogito";
+#[allow(dead_code)]
 pub const BFO_IMPORT: &str = "http://purl.obolibrary.org/obo/bfo/2020/bfo.owl";
 
 /// The built-in spec path (relative to the binary's directory or embedded).
@@ -35,7 +36,10 @@ pub struct ObjectPropertyDef {
     #[serde(default)]
     pub transitive: bool,
     pub inverse_of: Option<String>,
+    // domain/range reserved for future expansion
+    #[allow(dead_code)]
     pub domain: Option<String>,
+    #[allow(dead_code)]
     pub range: Option<String>,
 }
 

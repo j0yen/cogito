@@ -8,7 +8,7 @@
 use std::path::PathBuf;
 use std::process;
 
-use anyhow::{Context, Result};
+use anyhow::Result;
 use clap::{Parser, Subcommand};
 
 mod spec;

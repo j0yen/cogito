@@ -12,7 +12,6 @@ use crate::spec::{self, CogitoSpec};
 
 const RDFS_LABEL: &str = "http://www.w3.org/2000/01/rdf-schema#label";
 const RDFS_COMMENT: &str = "http://www.w3.org/2000/01/rdf-schema#comment";
-const OWL_TRANSITIVE: &str = "http://www.w3.org/2002/07/owl#TransitiveProperty";
 
 /// Build the TBox OWL file.
 ///
@@ -27,7 +26,7 @@ pub fn build(spec_path: Option<&Path>, out: &Path) -> Result<()> {
     if let Ok(reason_path) = which_ousia_reason() {
         eprintln!("note: running ousia-reason check on output...");
         let status = Command::new(&reason_path)
-            .args(["check", &out.to_string_lossy()])
+            .args(["check", "--owl", &out.to_string_lossy()])
             .status()
             .with_context(|| format!("running ousia-reason at {}", reason_path))?;
         if !status.success() {

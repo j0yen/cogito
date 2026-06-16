@@ -130,7 +130,7 @@ fn ac5_ousia_reason_check() {
         }
         Some(reason) => {
             let status = Command::new(&reason)
-                .args(["check", out.to_str().unwrap()])
+                .args(["check", "--owl", out.to_str().unwrap()])
                 .status()
                 .expect("failed to run ousia-reason");
             assert!(
