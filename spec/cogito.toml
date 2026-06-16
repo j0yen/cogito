@@ -1,0 +1,95 @@
+iri = "https://wintermute.local/cogito"
+version_iri = "https://wintermute.local/cogito/0.1.0"
+imports = ["http://purl.obolibrary.org/obo/bfo/2020/bfo.owl"]
+
+# Object properties
+[[object_properties]]
+iri = "https://wintermute.local/cogito#dependsOn"
+label = "depends on"
+transitive = true
+
+[[object_properties]]
+iri = "https://wintermute.local/cogito#registersOn"
+label = "registers on"
+
+[[object_properties]]
+iri = "https://wintermute.local/cogito#writesTo"
+label = "writes to"
+
+[[object_properties]]
+iri = "https://wintermute.local/cogito#backedBy"
+label = "backed by"
+
+[[object_properties]]
+iri = "https://wintermute.local/cogito#providesCapability"
+label = "provides capability"
+
+[[object_properties]]
+iri = "https://wintermute.local/cogito#healthcheckedBy"
+label = "healthchecked by"
+
+[[object_properties]]
+iri = "https://wintermute.local/cogito#ownedByVision"
+label = "owned by vision"
+
+# Classes
+[[classes]]
+iri = "https://wintermute.local/cogito#Daemon"
+label = "Daemon"
+parent = "http://purl.obolibrary.org/obo/BFO_0000015"
+definition = "A continuously running background process managed by a service supervisor."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#Unit"
+label = "Unit"
+definition = "A discrete deployable component of the wintermute system."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#Socket"
+label = "Socket"
+parent = "http://purl.obolibrary.org/obo/BFO_0000002"
+definition = "A communication endpoint that persists as a continuant between process interactions."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#Bus"
+label = "Bus"
+definition = "A message-passing backbone over which daemons exchange events."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#Tool"
+label = "Tool"
+definition = "An executable utility available to the system or to Claude agents."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#Repo"
+label = "Repo"
+definition = "A version-controlled source repository managed within the wintermute ecosystem."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#Session"
+label = "Session"
+parent = "http://purl.obolibrary.org/obo/BFO_0000015"
+definition = "A bounded interaction process between a user and the system."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#KernelPrimitive"
+label = "Kernel Primitive"
+definition = "A low-level operating system mechanism exposed by the kernel (e.g. cgroup, namespace, BPF program)."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#Healthcheck"
+label = "Healthcheck"
+definition = "A process that verifies the liveness or correctness of a system component."
+
+[[classes]]
+iri = "https://wintermute.local/cogito#BusHealthcheck"
+label = "Bus Healthcheck"
+parent_full = "https://wintermute.local/cogito#Healthcheck"
+definition = "A healthcheck that monitors a daemon's registration and message flow on a Bus."
+subclass_of = ["https://wintermute.local/cogito#healthcheckedBy some https://wintermute.local/cogito#BusRegistrant"]
+
+[[classes]]
+iri = "https://wintermute.local/cogito#BusRegistrant"
+label = "Bus Registrant"
+definition = "A daemon that is registered on at least one Bus."
+equivalent_to = "https://wintermute.local/cogito#Daemon and https://wintermute.local/cogito#registersOn some https://wintermute.local/cogito#Bus"
